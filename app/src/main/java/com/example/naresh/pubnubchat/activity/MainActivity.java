@@ -1,7 +1,9 @@
-package com.example.naresh.pubnubchat;
+package com.example.naresh.pubnubchat.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.naresh.pubnubchat.R;
 
 public class MainActivity extends AppCompatActivity {
 
