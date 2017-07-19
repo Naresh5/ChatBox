@@ -1,3 +1,3 @@
 # ChatBox
-ChatBox using PubNub
-This repo is created for Chat Application using PubNub for realtime data stream. 
+ChatBox using PubNub.
+Simple Demo for ChatApp with very simple layout using PubNub for realtime data streaming.
