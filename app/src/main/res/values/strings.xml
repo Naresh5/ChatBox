@@ -5,4 +5,6 @@
     <string name="send">Send</string>
     <string name="username">UserName</string>
     <string name="login">Login</string>
+    <string name="logout">Logout</string>
+
 </resources>
