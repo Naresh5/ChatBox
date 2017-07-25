@@ -1,24 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/chatHolder"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/_6dp"
-    android:background="@color/colorLime_400"
-    android:orientation="vertical"
-    android:padding="@dimen/_6dp">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/username"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/chatHolder"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_6dp"
+        android:background="@color/colorChatRight"
+        android:orientation="vertical"
+        android:padding="@dimen/_6dp">
 
-    <TextView
-        android:id="@+id/message"
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorChatBlue"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/chatHolderLeft"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent" />
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layout_marginBottom="@dimen/_6dp"
+        android:background="@color/colorChatLeft"
+        android:orientation="vertical"
+        android:padding="@dimen/_6dp">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/usernameLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorChatBlue"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/messageLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack" />
+    </LinearLayout>
+</FrameLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

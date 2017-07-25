@@ -5,4 +5,12 @@
     <color name="colorAccent">#f90658</color>
     <color name="colorLime_400">#646363</color>
     <color name="colorBlue_200">#f4d8d8</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#020202</color>
+    <color name="colorChatBg">#DCD8CC</color>
+    <color name="colorChatLeft">#dff7ca</color>
+    <color name="colorChatRight">#ecd0d0</color>
+    <color name="colorChatBlue">#b20712ea</color>
+
+
 </resources>
