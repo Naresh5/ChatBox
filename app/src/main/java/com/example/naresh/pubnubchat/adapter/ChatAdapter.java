@@ -44,21 +44,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             holder.chatHolder.setVisibility(View.VISIBLE);
             holder.username.setText(messageObject.getUsername());
             holder.message.setText(messageObject.getMessage());
-
         } else {
-
             holder.chatHolder.setVisibility(View.INVISIBLE);
             holder.chatHolderLeft.setVisibility(View.VISIBLE);
             holder.usernameLeft.setText(messageObject.getUsername());
             holder.messageLeft.setText(messageObject.getMessage());
         }
     }
-
     @Override
     public int getItemCount() {
         return chatMessageList.size();
     }
-
 
     class ChatViewHolder extends RecyclerView.ViewHolder {
 
