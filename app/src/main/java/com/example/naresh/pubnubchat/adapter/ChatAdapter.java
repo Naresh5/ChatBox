@@ -19,7 +19,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     private ArrayList<String> chatMessageList;
     private Gson gson = new Gson();
     private String message;
-    private String username;
     private String myUsername;
     private Context context;
 
@@ -27,7 +26,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         this.chatMessageList = chatMessageList;
         this.myUsername = myUsername;
     }
-
 
     @Override
     public ChatViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -41,14 +39,19 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
         message = chatMessageList.get(position);
         Message messageObject = gson.fromJson(message, Message.class);
+        if (messageObject.getUsername().equals(myUsername)) {
+            holder.chatHolderLeft.setVisibility(View.INVISIBLE);
+            holder.chatHolder.setVisibility(View.VISIBLE);
+            holder.username.setText(messageObject.getUsername());
+            holder.message.setText(messageObject.getMessage());
 
-        username = messageObject.getUsername();
-        holder.username.setText(messageObject.getUsername());
-        if (!(username.equals(myUsername))) {
-            holder.chatHolder.setBackgroundColor(context.getResources().getColor(R.color.colorBlue_200));
+        } else {
+
+            holder.chatHolder.setVisibility(View.INVISIBLE);
+            holder.chatHolderLeft.setVisibility(View.VISIBLE);
+            holder.usernameLeft.setText(messageObject.getUsername());
+            holder.messageLeft.setText(messageObject.getMessage());
         }
-        holder.message.setText(messageObject.getMessage());
-
     }
 
     @Override
@@ -59,15 +62,18 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     class ChatViewHolder extends RecyclerView.ViewHolder {
 
-        LinearLayout chatHolder;
-        TextView username;
-        TextView message;
+        LinearLayout chatHolder, chatHolderLeft;
+        TextView username, usernameLeft;
+        TextView message, messageLeft;
 
         private ChatViewHolder(View itemView) {
             super(itemView);
             username = (TextView) itemView.findViewById(R.id.username);
             message = (TextView) itemView.findViewById(R.id.message);
             chatHolder = (LinearLayout) itemView.findViewById(R.id.chatHolder);
+            usernameLeft = (TextView) itemView.findViewById(R.id.usernameLeft);
+            messageLeft = (TextView) itemView.findViewById(R.id.messageLeft);
+            chatHolderLeft = (LinearLayout) itemView.findViewById(R.id.chatHolderLeft);
         }
     }
 }

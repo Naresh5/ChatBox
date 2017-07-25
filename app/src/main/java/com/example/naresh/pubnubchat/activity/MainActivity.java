@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements CustomCallback {
     private FragmentTransaction fragmentTransaction;
     private MainActivityBinding mMainActivityBinding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
