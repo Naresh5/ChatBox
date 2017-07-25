@@ -74,6 +74,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             usernameLeft = (TextView) itemView.findViewById(R.id.usernameLeft);
             messageLeft = (TextView) itemView.findViewById(R.id.messageLeft);
             chatHolderLeft = (LinearLayout) itemView.findViewById(R.id.chatHolderLeft);
+
+
         }
     }
 }
