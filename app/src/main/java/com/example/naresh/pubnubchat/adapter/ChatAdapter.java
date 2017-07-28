@@ -1,6 +1,7 @@
 package com.example.naresh.pubnubchat.adapter;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.naresh.pubnubchat.R;
+import com.example.naresh.pubnubchat.databinding.ChatFragmentBinding;
 import com.example.naresh.pubnubchat.pojo.Message;
 import com.google.gson.Gson;
 
@@ -21,6 +23,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     private String message;
     private String myUsername;
     private Context context;
+    ChatFragmentBinding mChatFragmentBinding;
 
     public ChatAdapter(ArrayList<String> chatMessageList, String myUsername) {
         this.chatMessageList = chatMessageList;
@@ -30,12 +33,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     @Override
     public ChatViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
+
         return new ChatViewHolder(LayoutInflater.from(context).inflate
                 (R.layout.chat_layout, parent, false));
     }
 
+
     @Override
-    public void onBindViewHolder(ChatViewHolder holder, int position) {
+    public void onBindViewHolder(final ChatViewHolder holder, int position) {
 
         message = chatMessageList.get(position);
         Message messageObject = gson.fromJson(message, Message.class);
@@ -51,6 +56,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             holder.messageLeft.setText(messageObject.getMessage());
         }
     }
+
     @Override
     public int getItemCount() {
         return chatMessageList.size();

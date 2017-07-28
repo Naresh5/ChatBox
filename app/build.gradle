@@ -21,6 +21,11 @@ android {
     dataBinding {
         enabled = true
     }
+
+    repositories {
+        maven { url "https://dl.bintray.com/hani-momanii/maven"}
+    }
+
 }
 
 dependencies {
@@ -36,4 +41,6 @@ dependencies {
     compile "com.android.support:recyclerview-v7:25.3.1"
     compile "com.google.code.gson:gson:2.8.0"
     compile 'com.android.support:support-v4:25.3.1'
+    compile 'hani.momanii.supernova_emoji_library:supernova-emoji-library:0.0.2'
+
 }
