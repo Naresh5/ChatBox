@@ -44,7 +44,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
         message = chatMessageList.get(position);
         Message messageObject = gson.fromJson(message, Message.class);
-        if (messageObject.getUsername().equals(myUsername)) {
+        if (!messageObject.getUsername().equals(myUsername)) {
             holder.chatHolderLeft.setVisibility(View.INVISIBLE);
             holder.chatHolder.setVisibility(View.VISIBLE);
             holder.username.setText(messageObject.getUsername());
