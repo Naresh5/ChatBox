@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.CompoundButtonCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,6 +39,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
+
 public class ChatFragment extends Fragment {
 
     private ChatFragmentBinding mChatFragmentBinding;
@@ -51,6 +54,7 @@ public class ChatFragment extends Fragment {
     private Gson gson;
     private JSONObject messageObject;
     private String username;
+    private EmojIconActions emojIconActions;
 
     public ChatFragment() {
         // Required empty public constructor
@@ -67,6 +71,7 @@ public class ChatFragment extends Fragment {
         bindAllView(inflater, container);
         setHasOptionsMenu(true);
         initObjects();
+        setEmojIcon();
 
         username = sharedPreferences.getString("username", null);
         getActivity().setTitle(username);
@@ -130,12 +135,12 @@ public class ChatFragment extends Fragment {
             Log.e(TAG, pb.toString());
         }
 
-        mChatFragmentBinding.btnSend.setOnClickListener(new View.OnClickListener() {
+        mChatFragmentBinding.submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (mChatFragmentBinding.btnSend.getId() == v.getId()) {
-                    String message = mChatFragmentBinding.edtMessage.getText().toString().trim();
+                if (mChatFragmentBinding.submitBtn.getId() == v.getId()) {
+                    String message = mChatFragmentBinding.emojiconEditText.getText().toString().trim();
                     if (message.length() != 0) {
                         message = gson.toJson(new Message(username, message));
                         try {
@@ -143,7 +148,7 @@ public class ChatFragment extends Fragment {
                         } catch (JSONException je) {
                             Log.d(TAG, je.toString());
                         }
-                        mChatFragmentBinding.edtMessage.setText("");
+                        mChatFragmentBinding.emojiconEditText.setText("");
 
                         pubnub.publish(PubNubKeys.CHANNEL_NAME, messageObject, new Callback() {
                             @Override
@@ -220,6 +225,25 @@ public class ChatFragment extends Fragment {
 
         mChatFragmentBinding.chatListRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mChatFragmentBinding.chatListRecyclerView.setAdapter(chatAdapter);
+    }
+
+    private void setEmojIcon(){
+        emojIconActions = new EmojIconActions(getContext(), mChatFragmentBinding.rootView, mChatFragmentBinding.emojiconEditText, mChatFragmentBinding.emojiBtn);
+        emojIconActions.ShowEmojIcon();
+        emojIconActions.setIconsIds(R.drawable.ic_action_keyboard, R.drawable.smiley);
+        emojIconActions.setKeyboardListener(new EmojIconActions.KeyboardListener() {
+            @Override
+            public void onKeyboardOpen() {
+                Log.e(TAG, "Keyboard opened");
+            }
+
+            @Override
+            public void onKeyboardClose() {
+                Log.e(TAG, "Keyboard closed");
+
+            }
+        });
+
     }
 
 }
