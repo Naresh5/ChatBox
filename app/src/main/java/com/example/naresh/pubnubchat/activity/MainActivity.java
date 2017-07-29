@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements CustomCallback {
     private FragmentTransaction fragmentTransaction;
     private MainActivityBinding mMainActivityBinding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements CustomCallback {
 
     @Override
     public void loginActivity(int LOGIN_STATE) {
-
         if (LOGIN_STATE == 0) {
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container, new ChatFragment(), "Chat");
