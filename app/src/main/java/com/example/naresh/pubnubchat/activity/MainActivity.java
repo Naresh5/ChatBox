@@ -20,10 +20,12 @@ public class MainActivity extends AppCompatActivity implements CustomCallback {
     private FragmentTransaction fragmentTransaction;
     private MainActivityBinding mMainActivityBinding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mMainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
 
         sharedPreferences = getSharedPreferences("details", MODE_PRIVATE);
         fragmentManager = getSupportFragmentManager();
